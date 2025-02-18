@@ -1,32 +1,39 @@
 #include <stdio.h>
 
+    void moverTorre(int casa){ //Recursividade para o movimento da torre, substituindo os loops simples
+        if (casa > 0){
+            printf("Direita \n");
+            moverTorre(casa - 1);
+    }
+    }
+    void moverBispo(int casa2){ //Rescursividade para o movimento ddo bispo usando loop aninhado
+        for (int casaV = 1; casaV <= casa2; casaV++){ //casaV = Verticais
+            for (int casaH = 5; casaH <= casa2; casaH++) //casaH = Horizontais
+            {
+                printf("Direita ");
+            }
+            printf("Cima\n");
+        }
+    }
+    void moverRainha(int casa3){ //Recursividade para o movimento da rainha, substituindo os loops simples
+        if (casa3 > 0){
+            printf("Esquerda \n");
+            moverRainha(casa3 - 1);
+        }
+    }
 // Desafio de Xadrez - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
 int main() {
     printf("Torre\n\n"); // movimento da torre
-    for (int t = 1; t <= 5; t++)//utilizando o 'for' para imprimir o numero de casas andadas pela torre para a direita
-    {
-        printf("Direita\n");
-    }
+    moverTorre(5);
 
     printf("\n\nBispo\n\n");// utilizando o 'while' para imprimir o numero de casas andadas pelo bisto para cima e direita
-    int b=1; // variavel b = BISPO
-    while (b <=5) // enquanto bispo for menor ou igual a 5, imprimir 'Cima direita' + numero da casa
-    {
-       printf("Cima\n");
-       printf("Direita\n");
-       b++;// adicionar 1 casa cada vez que impressa a informacao
-    }
+    moverBispo(5);
 
     printf("\n\nRainha\n\n"); //movimento da rainha com 'do-while'
-    int r =1;// variavel r = RAINHA
-    do
-    {         // imprime 1 primeira vez sem considerar a condicao
-        printf("Esquerda\n");  // depois adiciona +1 casa e imprime novamente ate que 'r' seja maior que 8
-        r++; // para impedir loop infinito e adicionar uma casa sempre que houver impressao
-    } while (r <= 8); // condicao para repeticao do comando dentro de 'do'
+    moverRainha(8);
     
     printf("\n\nCavalo\n\n");
     int knightmove = 1; //variavel declarada para movimento do cavalo
@@ -35,7 +42,7 @@ int main() {
     do //loop externo
     {
 
-        for (int i = 1; i <= 2; i++) // loop interno
+        for (int i = 1; i <= 2 && i >= 0; i++) // loop interno com multiplas condicoes
         {
             printf("Baixo\n"); //imprime 2x, pois o loop so eh interrompido uma vez que 'i' seja maior que 2, o que requer 2 execucoes
         }
